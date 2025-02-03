@@ -1,0 +1,41 @@
+
+
+<!-- Header -->
+<header class="bg-blue-600 text-white p-4 shadow-md font-serif">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <legend class="text-2xl font-medium text-center w-full md:w-auto">
+        Health Tracker
+      </legend>
+      <nav>
+        <ul class="hidden md:flex space-x-10 text-base">
+          <li><a routerLink="/workout-form" routerLinkActive="text-yellow-300" class="hover:underline">Home</a></li>
+          <li><a routerLink="/workout-list" routerLinkActive="text-yellow-300" class="hover:underline">Workout List</a></li>
+          <li><a routerLink="/workout-chart" routerLinkActive="text-yellow-300" class="hover:underline">Progress</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="text-nowrap md:hidden mt-4 flex justify-center space-x-6 px-4">
+      <ul class="flex space-x-10">
+        <li>
+          <a routerLink="/workout-form" routerLinkActive="text-yellow-300" class="block text-base hover:underline">Home</a>
+        </li>
+        <li>
+          <a routerLink="/workout-list" routerLinkActive="text-yellow-300" class="block text-base hover:underline">Workout List</a>
+        </li>
+        <li>
+          <a routerLink="/workout-chart" routerLinkActive="text-yellow-300" class="block text-base hover:underline">Progress</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+  <!-- Router Outlet -->
+  <router-outlet></router-outlet>
+  
+  <!-- Footer -->
+  <footer class="bg-red-500 text-white p-3 font-serif font-base tracking-widest">
+    <div class="max-w-7xl mx-auto text-center">
+      <label>&copy; 2025 Fyle Health Tracker. All rights reserved.</label>
+    </div>
+  </footer>
+  

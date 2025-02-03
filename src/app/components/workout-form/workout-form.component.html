@@ -1,0 +1,52 @@
+<div class="theme-toggle">
+<div class="max-w-lg mx-auto p-4 border border-gray-300 rounded-lg shadow-lg">
+    <h2 class="text-xl font-semibold mb-4"> Workout form </h2>
+
+    <form [formGroup]="workoutForm" (ngSubmit)="addWorkout()" class="space-y-4">
+
+        <!-- Workout Name -->
+        <div>
+            <label for="Name" class="block text-sm font-medium text-gray-700">Workout Name:</label>
+            <input id="Name" formControlName="Name" type="text" placeholder="Enter Name"
+                class="w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <!-- Workout Types (Checkboxes for multiple selection) -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Workout Types:</label>
+            <div class="checkmark">
+                <label>
+                    <input type="checkbox" formControlName="cycling" /> Cycling
+                </label>
+                <label>
+                    <input type="checkbox" formControlName="swimming" /> Swimming
+                </label>
+                <label>
+                    <input type="checkbox" formControlName="yoga" /> Yoga
+                </label>
+                <label>
+                    <input type="checkbox" formControlName="running" /> Running
+                </label>
+            </div>
+        </div>
+
+        <!-- Workout Duration (Minutes) -->
+        <div>
+            <label for="minutes" class="block text-sm font-medium text-gray-700">Workout Duration (in minutes):</label>
+            <input id="minutes" formControlName="minutes" type="number" placeholder="Enter workout duration (minutes)"
+                class="w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button 
+            type="submit" 
+            [disabled]="workoutForm.invalid" 
+            class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 disabled:bg-gray-300">
+            Add Workout
+            </button>
+        </div>
+        
+
+    </form>
+</div>

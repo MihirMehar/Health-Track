@@ -1,0 +1,80 @@
+<div class="container">
+  <h2 class="text-3xl font-semibold mb-4 text-center">Workout Tracker</h2>
+
+  <!-- Search Section -->
+  <div class="filter-section mb-4 flex justify-between">
+    <div>
+      <label for="search-name" class="text-lg">Search by Name:</label>
+      <input id="search-name" [(ngModel)]="filterName" (input)="applyFilters()" placeholder="Search workouts by name"
+        class="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 w-64" />
+    </div>
+
+    <!-- Filter by Type Section -->
+    <div>
+      <label for="filter-type" class="text-lg">Filter by Type:</label>
+      <select id="filter-type" [(ngModel)]="filterType" (change)="onFilterByType()"
+        class="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+        <option value="">All Types</option>
+        <option *ngFor="let type of uniqueWorkoutTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Edit Form Section -->
+  <div *ngIf="selectedWorkout">
+    <h2 class="text-2xl mb-4">Edit Workout</h2>
+    <form (ngSubmit)="submitEdit()">
+      <label for="name" class="block text-lg">Name:</label>
+      <input id="name" [(ngModel)]="selectedWorkout.name" name="name" required class="p-2 border border-gray-300 rounded-md mb-4 w-full" />
+      
+      <label for="workoutType" class="block text-lg">Workout Type:</label>
+      <input id="workoutType" [(ngModel)]="selectedWorkout.workoutType" name="workoutType" required class="p-2 border border-gray-300 rounded-md mb-4 w-full" />
+      
+      <label for="minutes" class="block text-lg">Minutes:</label>
+      <input id="minutes" [(ngModel)]="selectedWorkout.minutes" name="minutes" type="number" required class="p-2 border border-gray-300 rounded-md mb-4 w-full" />
+      
+      <div class="flex justify-end space-x-4">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Save Changes</button>
+        <button type="button" (click)="cancelEdit()" class="bg-gray-500 text-white px-4 py-2 rounded-md">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Workout List Section -->
+  <div *ngIf="!selectedWorkout">
+    <h2 class="text-2xl mb-4">Workout List</h2>
+    <table class="min-w-full bg-white border border-gray-300 shadow-md">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-2 px-4 text-left">Name</th>
+          <th class="py-2 px-4 text-left">Workout Type</th>
+          <th class="py-2 px-4 text-left">Minutes</th>
+          <th class="py-2 px-4 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let workout of displayedWorkouts">
+          <td class="py-2 px-4">{{ workout.name }}</td>
+          <td class="py-2 px-4">{{ workout.workoutType }}</td>
+          <td class="py-2 px-4">{{ workout.minutes }}</td>
+          <td class="py-2 px-4">
+            <button (click)="editWorkout(workout)" class="bg-yellow-500 text-white px-4 py-2 rounded-md mr-2">Edit</button>
+            <button (click)="deleteWorkout(workout)" class="bg-red-500 text-white px-4 py-2 rounded-md">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination flex justify-center space-x-4 mt-4">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" 
+      class="page-btn bg-gray-300 text-black px-4 py-2 rounded-md hover:bg-gray-400 disabled:opacity-50">
+      Previous
+    </button>
+    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalWorkouts" 
+      class="page-btn bg-gray-300 text-black px-4 py-2 rounded-md hover:bg-gray-400 disabled:opacity-50">
+      Next
+    </button>
+  </div>
+</div>
