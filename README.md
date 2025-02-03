@@ -71,6 +71,6 @@ Follow these instructions to get a local copy of the project up and running on y
 - **License**: This project is licensed under the MIT License. See the LICENSE file for details 📜.
 - **Contact**: mihirmehar@2769gmail.com 📧
 
-You can also view the deployed application on Netlify: [Health Tracker](https://snazzy-maamoul-7c3cba.netlify.app/workout-form) 🌍. 
+You can also view the deployed application on Netlify: [Health Tracker](https://healthy-t.netlify.app/) 🌍. 
 
 This project was generated with Angular CLI version 14.
